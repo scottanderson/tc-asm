@@ -1,0 +1,21 @@
+label start
+0x51 # ldi 1
+0x4f # sta [15]
+0x50 # ldi 0
+label up
+0x2f # add [15]
+0x76 # jc  dn
+0x63 # jmp up
+label dn
+0x3f # sub [15]
+0x89 # jz  done
+0x66 # jmp dn
+label done
+0x1e # lda [14]
+0xe0 # out
+0x2f # add [15]
+0x7f # jc  halt
+0x4e # sta [14]
+0x63 # jmp up
+label halt
+0xf0 # hlt
